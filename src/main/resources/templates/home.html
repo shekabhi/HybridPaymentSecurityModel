@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment Security</title>
+
+    <link th:href="@{~/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{~/css/home.css}" rel="stylesheet">
+</head>
+<body>
+  <!--  <a class="nav-link" href="#" th:href="@{~/profile/index}">Profile</a> -->
+    <nav class="navbar navbar-light bg-custom mr-auto">
+        <a class="navbar-brand mr-auto" href="">
+            <img
+                    th:src="@{assets/applelogo.png}"
+                    width="30"
+                    height="30"
+                    class="d-inline-block align-top"
+                    alt=""
+            />
+            Apple
+        </a>
+        <h6 style="color: white; margin-top: 7px; margin-right: 30px;">
+            username
+        </h6>
+        <form class="form-inline" th:action="@{/logout}" method="post">
+            <button
+                    sec:authorize="isAuthenticated()"
+                    style="
+            margin-top: 7px;
+            margin-right: 20px;
+            color: white;
+            border-color: #ff0000;
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+              0 0 14px rgba(255, 0, 0, 0.6);
+          "
+                    class="btn btn-outline-dark"
+                    type="submit"
+            >
+                LOGOUT
+            </button>
+            <button
+                    sec:authorize="isAnonymous()"
+                    th:action="@{/login}"
+                    style="
+            margin-top: 7px;
+            margin-right: 20px;
+            color: white;
+            border-color: #ff0000;
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+              0 0 14px rgba(255, 0, 0, 0.6);
+          "
+                    class="btn btn-outline-dark"
+                    type="submit"
+            >
+                LOGIN
+            </button>
+        </form>
+    </nav>
+
+    <!-- Body -->
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <img
+                        style="margin-left: 50px;"
+                        th:src="@{assets/iphone.png}"
+                        width="293"
+                        height="530"
+                />
+            </div>
+            <div class="col-sm-6">
+                <div style="margin-top: 50px;" class="row">
+                    <img
+                            src="/assets/applelogo.png"
+                            width="30"
+                            height="30"
+                            class="d-inline-block align-top"
+                            alt=""
+                    />
+                    <h4
+                            style="
+                margin-left: 10px;
+                color: white;
+                font-family: Arial, Helvetica, sans-serif;
+              "
+                    >
+                        iPhone11 Pro
+                    </h4>
+                </div>
+                <h1
+                        style="
+              margin-top: 30px;
+              font-size: 55px;
+              color: white;
+              font-family: Arial, Helvetica, sans-serif;
+            "
+                >
+                    Pro cameras.
+                </h1>
+                <h1
+                        style="
+              font-size: 55px;
+              color: white;
+              font-family: Arial, Helvetica, sans-serif;
+            "
+                >
+                    Pro display.
+                </h1>
+                <h1
+                        style="
+              font-size: 55px;
+              color: white;
+              font-family: Arial, Helvetica, sans-serif;
+            "
+                >
+                    Pro performance.
+                </h1>
+                <h6
+                        style="
+              margin-top: 20px;
+              color: white;
+              font-family: Arial, Helvetica, sans-serif;
+            "
+                >
+                    Starting from ₹1,06,600 MRP
+                </h6>
+                <form class="form-inline" th:action="@{/payment/index}" method="GET" >
+                    <button
+                            sec:authorize="isAuthenticated()"
+                            style="
+            margin-top: 7px;
+            margin-right: 20px;
+            color: white;
+            border-color: #ff0000;
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+              0 0 14px rgba(255, 0, 0, 0.6);
+          "
+                            class="btn btn-outline-success"
+                            type="submit"
+                    >
+                        Buy
+                    </button>
+                    <button
+                            sec:authorize="isAnonymous()"
+                            th:action="@{/login}"
+                            style="
+            margin-top: 7px;
+            margin-right: 20px;
+            color: white;
+            border-color: #ff0000;
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+              0 0 14px rgba(255, 0, 0, 0.6);
+          "
+                            class="btn btn-outline-dark"
+                            type="submit"
+                    >
+                        Buy
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="page-footer font-small blue">
+        <!-- Copyright -->
+
+        <div class="footer-copyright text-center py-3">
+            Designed With ♥ BY
+            <a
+                    href="https://github.com/shekabhi"
+                    style="color: #ff0000; margin-left: 10px;"
+            >Team Friends</a
+            >
+        </div>
+
+        <!-- Copyright -->
+    </footer>
+</body>
+</html>
