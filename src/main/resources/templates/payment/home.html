@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment Security</title>
+
+    <link th:href="@{~/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{~/css/payment/home.css}" rel="stylesheet">
+</head>
+<body>
+<!-- Nav Bar -->
+
+<nav class="navbar navbar-light bg-custom mr-auto">
+    <a class="navbar-brand mr-auto" th:href="@{/}">
+        <img
+                th:src="@{${'data:image/png;base64,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'}}"
+                width="30"
+                height="30"
+                class="d-inline-block align-top"
+                alt=""
+        />
+        Apple
+    </a>
+    <div sec:authorize="isAuthenticated()">
+        <span style="color: white;margin-right: 20px;" sec:authentication="name"></span>
+    </div>
+    <form class="form-inline" th:action="@{/logout}" method="post">
+        <button
+                sec:authorize="isAuthenticated()"
+                style="
+            margin-top: 7px;
+            margin-right: 20px;
+            color: white;
+            border-color: #ff0000;
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+              0 0 14px rgba(255, 0, 0, 0.6);
+          "
+                class="btn btn-outline-dark"
+                type="submit"
+        >
+            LOGOUT
+        </button>
+        <button
+                sec:authorize="isAnonymous()"
+                th:action="@{/login}"
+                style="
+            margin-top: 7px;
+            margin-right: 20px;
+            color: white;
+            border-color: #ff0000;
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+              0 0 14px rgba(255, 0, 0, 0.6);
+          "
+                class="btn btn-outline-dark"
+                type="submit"
+        >
+            LOGIN
+        </button>
+    </form>
+</nav>
+
+<!-- Body -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <h3
+                    style="
+              color: white;
+              text-align: center;
+              margin-top: 40px;
+              font-family: Arial, Helvetica, sans-serif;
+            "
+            >
+                Payment Method
+            </h3>
+            <!-- One time payment form -->
+            <form class="form-inline" th:action="@{/payment/onetimepay}" method="get">
+                <button
+                        style="
+                margin-top: 70px;
+                margin-left: 160px;
+                color: white;
+                border-color: #ff0000;
+                box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+                  0 0 14px rgba(255, 0, 0, 0.6);
+              "
+                        class="btn btn-outline-dark"
+                        type="submit"
+                        required
+                >
+                    One Time Pay
+                </button>
+            </form>
+            <!-- Add card detail button -->
+            <form class="form-inline"  th:action="@{/payment/addcard}" method="get">
+                <button
+                        style="
+                margin-top: 70px;
+                margin-left: 160px;
+                color: white;
+                border-color: #ff0000;
+                box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+                  0 0 14px rgba(255, 0, 0, 0.6);
+              "
+                        class="btn btn-outline-dark"
+                        type="submit"
+                >
+                    Add New Card
+                </button>
+            </form>
+        </div>
+        <div class="col-sm-6">
+            <!-- Saved Card Details -->
+            <div class="container">
+                <h4
+                        style="
+                color: white;
+                text-align: left;
+                margin-top: 40px;
+                margin-left: 45px;
+                font-family: Arial, Helvetica, sans-serif;
+              "
+                >
+                    Saved Card Details
+                </h4>
+                <div id="scrollable">
+                    <tr
+                            th:each="card, iStat : ${cards}"
+                            th:style="${iStat.odd}? 'font-weight: bold;'"
+                            th:alt-title="${iStat.even}? 'even' : 'odd'">
+
+                        <div
+                                class="card"
+                                style="width: 22rem; margin-top: 40px; margin-left: 50px;"
+                        >
+                            <div style="background-color: black;" class="card-body">
+                                <ul class="list-group list-group-flush">
+                                    <div class="row">
+                                        <li
+                                                style="color: white; background-color: black;"
+                                                class="list-group-item"
+                                        >
+                                            Account Number :
+                                        </li>
+                                        <li
+                                                style="color: white; background-color: black;"
+                                                class="list-group-item"
+                                        >
+                                            <td th:text="${card.accountnumber}"></td>
+                                        </li>
+                                    </div>
+                                    <div class="row">
+                                        <li
+                                                style="color: white; background-color: black;"
+                                                class="list-group-item"
+                                        >
+                                            Account User :
+                                        </li>
+                                        <li
+                                                style="color: white; background-color: black;"
+                                                class="list-group-item"
+                                        >
+                                            <td th:text="${card.firstname} + ' ' + ${card.lastname}" />
+                                        </li>
+                                    </div>
+                                </ul>
+
+                                <div class="row">
+                                    <div style="margin-left: 1px;" class="row">
+                                        <li
+                                                style="color: white; background-color: black;"
+                                                class="list-group-item"
+                                        >
+                                            Exp Date :
+                                        </li>
+                                        <li
+                                                style="color: white; background-color: black;"
+                                                class="list-group-item"
+                                        >
+                                            <td th:text="${card.expdate}" />
+                                        </li>
+                                    </div>
+                                    <input
+                                            style="
+                      margin-top: 10px;
+                      margin-left: 40px;
+                      width: 70px;
+                      height: 35px;
+
+                      border-color: #ff0000;
+                      box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+                        0 0 14px rgba(255, 0, 0, 0.6);
+                    "
+                                            type="password"
+                                            class="form-control"
+                                            id="cvv"
+                                            placeholder="CVV"
+                                            required
+                                    />
+                                </div>
+                                <div class="row">
+                                    <form class="form-inline" th:action="@{/payment/paymentgateway}" method="POST"  >
+                                        <button
+                                                style="
+                                                margin-top: 30px;
+                                                 margin-left: 30px;
+                                                     color: white;
+                                                    border-color: #ff0000;
+                                                     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+                                                    0 0 14px rgba(255, 0, 0, 0.6);
+                                                    "
+                                                class="btn btn-outline-dark"
+                                                type="submit"
+                                        >
+                                            Pay
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </tr>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

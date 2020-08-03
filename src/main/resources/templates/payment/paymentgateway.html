@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment Security</title>
+
+    <link th:href="@{~/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{~/css/payment/paymentgateway.css}" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>
+        Redirecting To Payment gateway
+        </h1>
+        <img th:src="@{${'https://i.gifer.com/J192.gif'}}"/>
+    </div>
+
+</body>
+</html>

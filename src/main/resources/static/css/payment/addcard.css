@@ -1,0 +1,14 @@
+body {
+    background-color: black;
+}
+.bg-custom {
+    background-color: black;
+}
+
+.navbar-brand {
+    color: white !important;
+}
+
+.btn:hover {
+    background-color: black;
+}
