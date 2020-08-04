@@ -64,6 +64,7 @@ public class PaymentController {
             newcard.setFirstname(decrypt(card.getFirstname() , originalKey));
             newcard.setLastname(decrypt(card.getLastname(),originalKey));
             newcard.setExpdate(decrypt(card.getExpdate(),originalKey));
+            newcard.setId(card.getId());
 
 
             //newcard.setAccountnumber(decrypt(card.getAccountnumber() , ## ));
@@ -98,7 +99,7 @@ public class PaymentController {
         KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
         keyGenerator.init(128); // block size is 128bits
         SecretKey secretKey = keyGenerator.generateKey();
-        //System.out.println("My secret Key before " + secretKey);
+        System.out.println("My secret Key before " + secretKey);
 
         //Encoding SecretKey
 
@@ -131,20 +132,27 @@ public class PaymentController {
         card.setFirstname(encrypt(firstname , secretKey));
         card.setLastname(encrypt(lastname , secretKey));
         card.setExpdate(encrypt(expdate , secretKey));
+       // card.setSecretkey(encodedKey);
 
-        cardServices.insertCard(card);
+    cardServices.insertCard(card);
        // System.out.println(" Card Detail : " + card);
 
         return "redirect:/payment/home";
     }
 
     //delete Card
-//    @RequestMapping("removecard/{id}")
-//    public String removedcard (@PathVariable String id) {
-//        System.out.println("Remove ID is : " + id);
-//        cardServices.deletebyid(id);
-//        return "redirect:/payment/home";
-//    }
+    @RequestMapping("removecard/{id}")
+    public String removedcard (@PathVariable int id) {
+        //System.out.println("Remove ID is : " + id);
+
+        Card card = cardServices.findbyId(id);
+        //System.out.println(card.getAccountnumber());
+        secretKeyServices.deletebyid(card.getAccountnumber());
+
+        cardServices.deletebyid(id);
+
+        return "redirect:/payment/home";
+    }
 
     @RequestMapping("paymentgateway")
     public String paymentGateway(){

@@ -13,20 +13,7 @@
         <div class="col-sm-7">
             <h1>Hybrid Payment Security Model</h1>
             <form class="form-inline" th:action="@{/}" method="POST" >
-                <button
-                        style="
-            margin-top: 60px;
-            margin-left: 250px;
-            color: white;
-            border-color: #ff0000;
-            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
-              0 0 14px rgba(255, 0, 0, 0.6);
-          "
-                        class="btn btn-outline-dark btn-lg"
-                        type="submit"
-                >
-                    HOME
-                </button>
+                <button class="btn btn-outline-dark btn-lg btn-custom-logout"  type="submit" > HOME </button>
             </form>
         </div>
         <div class="col-sm-5">
@@ -45,57 +32,19 @@
 
                     <!-- Login Controls -->
                     <div class="form-group">
-                        <input
-                                type="text" class="form-control" id="username" name="username"
-                                placeholder="Username"
-                                value="user"
-                                required
+                        <input type="text" class="form-control custom-input" id="username" name="username"
+                                placeholder="Username"  value="user"  required
                                 oninvalid="this.setCustomValidity('Please Enter Username')"
-                                oninput="this.setCustomValidity('')"
-                                style="
-                  width: 280px;
-                  margin-left: 80px;
-                  margin-top: 20px;
-                  border-color: #ff0000;
-                  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
-                    0 0 14px rgba(255, 0, 0, 0.6);
-                "
-                        />
+                                oninput="this.setCustomValidity('')"  />
                     </div>
                     <div class="form-group">
-                        <input
-                                type="password" class="form-control" id="password" name="password"
-                                placeholder="Password"
-                                value="pass"
-                                required
+                        <input type="password" class="form-control custom-input" id="password" name="password"
+                                placeholder="Password"  value="pass"  required
                                 oninvalid="this.setCustomValidity('Please Enter Passward')"
-                                oninput="this.setCustomValidity('')"
-                                style="
-                  width: 280px;
-                  margin-left: 80px;
-                  margin-top: 20px;
-                  border-color: #ff0000;
-                  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
-                    0 0 14px rgba(255, 0, 0, 0.6);
-                "
-                        />
+                                oninput="this.setCustomValidity('')" />
                     </div>
-                    <button
-                            style="
-                margin-top: 50px;
-                margin-left: 100px;
-                color: white;
-                border-color: #ff0000;
-                box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
-                  0 0 14px rgba(255, 0, 0, 0.6);
-              "
-                            type="submit"
-                            class="btn btn-outline-dark btn-lg"
-                    >
-                        LOGIN
-                    </button>
+                    <button type="submit" class="btn btn-outline-dark btn-lg btn-custom-login"> LOGIN </button>
                 </fieldset>
-
             </form>
         </div>
     </div>

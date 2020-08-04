@@ -7,6 +7,9 @@ import javax.persistence.*;
 public class Card {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id ;
+
     @Column(name = "accountnumber")
     private String accountnumber ;
 
@@ -31,6 +34,14 @@ public class Card {
         this.firstname = firstname;
         this.lastname = lastname;
         this.expdate = expdate;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getAccountnumber() {
@@ -76,6 +87,7 @@ public class Card {
     @Override
     public String toString() {
         return "Card{" +
+                "id=" + id +
                 ", accountnumber='" + accountnumber + '\'' +
                 ", username='" + username + '\'' +
                 ", firstname='" + firstname + '\'' +

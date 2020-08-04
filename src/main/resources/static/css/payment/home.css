@@ -1,8 +1,25 @@
 body {
     background-color: black;
 }
-.bg-custom {
-    background-color: black;
+
+h3{
+    color: white;
+    text-align: center;
+    margin-top: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h4{
+    color: white;
+    text-align: left;
+    margin-top: 40px;
+    margin-left: 45px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.img-logo{
+    width : 30px;
+    height : 30px ;
 }
 
 .navbar-brand {
@@ -10,10 +27,50 @@ body {
 }
 
 .btn:hover {
+    background-color: #ff0000;
+}
+
+.btn-custom-login , .btn-custom-logout{
+    margin-top: 7px;
+    margin-right: 20px;
+    color: white;
+    border-color: #ff0000;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+    0 0 14px rgba(255, 0, 0, 0.6);
+}
+
+.btn-custom-onetimepay , .btn-custom-addcard{
+    margin-top: 70px;
+    margin-left: 160px;
+    color: white;
+    border-color: #ff0000;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+    0 0 14px rgba(255, 0, 0, 0.6);
+}
+
+.list-custom{
+    color: white;
     background-color: black;
+}
+
+.custom-input{
+    margin-top: 10px;
+    margin-left: 40px;
+    border-color: #ff0000;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+    0 0 14px rgba(255, 0, 0, 0.6);
+}
+
+.btn-custom-pay{
+    margin-top: 30px;
+    margin-left: 30px;
+    color: white;
+    border-color: #ff0000;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+    0 0 14px rgba(255, 0, 0, 0.6);
 }
 
 div#scrollable {
     overflow-y: scroll;
-    max-height: 50vh;
+    max-height: 60vh;
 }

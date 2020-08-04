@@ -26,4 +26,14 @@ public class CardServicesImpl implements CardServices {
         return cardRepository.findAllById(name);
     }
 
+    @Override
+    public void deletebyid(int id) {
+        cardRepository.deleteById((long) id);
+    }
+
+    @Override
+    public Card findbyId(int id) {
+        return cardRepository.findById((long)id) ;
+    }
+
 }

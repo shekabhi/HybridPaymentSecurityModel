@@ -26,5 +26,10 @@ public class SecretKeyServicesImpl implements SecretKeyServices {
         return secretKeyInfoRepository.findByIdd(accountnumber);
     }
 
+    @Override
+    public void deletebyid(String accountnumber) {
+         secretKeyInfoRepository.deleteById(accountnumber);  ;
+    }
+
 
 }

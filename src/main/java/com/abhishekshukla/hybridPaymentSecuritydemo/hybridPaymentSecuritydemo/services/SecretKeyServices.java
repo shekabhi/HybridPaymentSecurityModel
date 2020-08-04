@@ -10,4 +10,6 @@ public interface SecretKeyServices {
     public void secretkeyinfo(EncodedData encodedData);
 
     public List<EncodedData> findbyid(String accountnumber);
+
+    public void deletebyid(String accountnumber);
 }
