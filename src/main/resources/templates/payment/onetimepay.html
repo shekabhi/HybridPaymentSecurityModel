@@ -23,8 +23,8 @@
         <span style="color: white;margin-right: 20px;" sec:authentication="name"></span>
     </div>
     <form class="form-inline" th:action="@{/logout}" method="post">
-        <button sec:authorize="isAuthenticated()" class="btn btn-outline-dark btn-custom-logout" type="submit"> LOGOUT </button>
-        <button sec:authorize="isAnonymous()" th:action="@{/login}" class="btn btn-outline-dark btn-custom-login" type="submit"> LOGIN </button>
+        <button sec:authorize="isAuthenticated()" class="btn btn-outline-danger btn-custom-logout" type="submit"> LOGOUT </button>
+        <button sec:authorize="isAnonymous()" th:action="@{/login}" class="btn btn-outline-danger btn-custom-login" type="submit"> LOGIN </button>
     </form>
 </nav>
 
@@ -57,7 +57,7 @@
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-outline-dark btn-custom-submit"> Submit </button>
+                <button type="submit" class="btn btn-outline-danger btn-custom-submit"> Submit </button>
             </form>
         </div>
     </div>

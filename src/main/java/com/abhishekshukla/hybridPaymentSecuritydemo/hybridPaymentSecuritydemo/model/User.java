@@ -10,9 +10,6 @@ import javax.persistence.Table;
 public class User {
 
     @Id
-    @Column(name="userid")
-    private String userId ;
-
     @Column(name="username")
     private String userName ;
 
@@ -22,18 +19,9 @@ public class User {
     public User() {
     }
 
-    public User(String userId, String userName, String passward) {
-        this.userId = userId;
+    public User(String userName, String passward) {
         this.userName = userName;
         this.passward = passward;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
     }
 
     public String getUserName() {
@@ -55,8 +43,7 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "userId='" + userId + '\'' +
-                ", userName='" + userName + '\'' +
+                "userName='" + userName + '\'' +
                 ", passward='" + passward + '\'' +
                 '}';
     }

@@ -23,8 +23,8 @@
         <span style="color: white;margin-right: 20px;" sec:authentication="name"></span>
     </div>
     <form class="form-inline" th:action="@{/logout}" method="post">
-        <button sec:authorize="isAuthenticated()"  class="btn btn-outline-dark btn-custom-logout" type="submit" > LOGOUT </button>
-        <button sec:authorize="isAnonymous()" th:action="@{/login}" class="btn btn-outline-dark btn-custom-login" type="submit"> LOGIN </button>
+        <button sec:authorize="isAuthenticated()"  class="btn btn-outline-danger btn-custom-logout" type="submit" > LOGOUT </button>
+        <button sec:authorize="isAnonymous()" th:action="@{/login}" class="btn btn-outline-danger btn-custom-login" type="submit"> LOGIN </button>
     </form>
 </nav>
 
@@ -35,11 +35,11 @@
             <h3> Payment Method </h3>
             <!-- One time payment form -->
             <form class="form-inline" th:action="@{/payment/onetimepay}" method="get">
-                <button class="btn btn-outline-dark btn-custom-onetimepay" type="submit" required> One Time Pay </button>
+                <button class="btn btn-outline-danger btn-custom-onetimepay" type="submit" required> One Time Pay </button>
             </form>
             <!-- Add card detail button -->
             <form class="form-inline"  th:action="@{/payment/addcard}" method="get">
-                <button class="btn btn-outline-dark btn-custom-addcard" type="submit"> Add New Card </button>
+                <button class="btn btn-outline-danger btn-custom-addcard" type="submit"> Add New Card </button>
             </form>
         </div>
         <div class="col-sm-6">
@@ -83,7 +83,7 @@
                                         />
                                     </div>
                                     <div class="row">
-                                            <button class="btn btn-outline-dark btn-custom-pay" type="submit"> Pay </button>
+                                            <button class="btn btn-outline-danger btn-custom-pay" type="submit"> Pay </button>
                                     </div>
                                 </div>
                             </div>

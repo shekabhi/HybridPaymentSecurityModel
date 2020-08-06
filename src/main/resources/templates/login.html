@@ -13,7 +13,7 @@
         <div class="col-sm-7">
             <h1>Hybrid Payment Security Model</h1>
             <form class="form-inline" th:action="@{/}" method="POST" >
-                <button class="btn btn-outline-dark btn-lg btn-custom-logout"  type="submit" > HOME </button>
+                <button class="btn btn-outline-danger btn-lg btn-custom-logout"  type="submit" > HOME </button>
             </form>
         </div>
         <div class="col-sm-5">
@@ -43,7 +43,12 @@
                                 oninvalid="this.setCustomValidity('Please Enter Passward')"
                                 oninput="this.setCustomValidity('')" />
                     </div>
-                    <button type="submit" class="btn btn-outline-dark btn-lg btn-custom-login"> LOGIN </button>
+                    <div>
+                        <a style="color: red ;margin-top: 40px;" th:href="@{'/signin'}">
+                            create new account
+                        </a>
+                    </div>
+                    <button type="submit" class="btn btn-outline-danger btn-lg btn-custom-login"> LOGIN </button>
                 </fieldset>
             </form>
         </div>

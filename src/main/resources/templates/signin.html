@@ -1,0 +1,45 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head >
+    <title>Log in</title>
+
+    <link th:href="@{~/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{~/css/signin.css}" rel="stylesheet">
+
+
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-7">
+            <h1>Hybrid Payment Security Model</h1>
+            <form class="form-inline" th:action="@{/}" method="POST" >
+                <button class="btn btn-outline-danger btn-lg btn-custom-logout"  type="submit" > HOME </button>
+            </form>
+        </div>
+        <div class="col-sm-5">
+            <h2>Create Account</h2>
+            <form class="form-style"  th:action="@{/newuser}" method="post">
+                <fieldset>
+                    <!-- Login Controls -->
+                    <div class="form-group">
+                        <input type="text" class="form-control custom-input"
+                               th:id="username" th:name="username"
+                               placeholder="Username"   required
+                               oninvalid="this.setCustomValidity('Please Enter Username')"
+                               oninput="this.setCustomValidity('')"  />
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control custom-input"
+                               th:id="passward" th:name="passward"
+                               placeholder="Password"    required
+                               oninvalid="this.setCustomValidity('Please Enter Passwaod')"
+                               oninput="this.setCustomValidity('')" />
+                    </div>
+                    <button type="submit" class="btn btn-outline-danger btn-lg btn-custom-login"> SIGNUP </button>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
