@@ -19,14 +19,26 @@
             />
             Apple
         </a>
+
+
         <div sec:authorize="isAuthenticated()">
             <span style="color: white;margin-right: 20px;" sec:authentication="name"></span>
         </div>
+        <form class="form-inline" th:action="@{/admin/home}" method="post">
+            <button
+                    style="margin-right: 20px"
+                    sec:authorize="hasRole('ROLE_ADMIN')"
+                    class="btn btn-outline-danger btn-sm"
+                    type="submit"
+            >
+                ADMIN
+            </button>
+        </form>
 
         <form class="form-inline" th:action="@{/logout}" method="post">
             <button
                     sec:authorize="isAuthenticated()"
-                    class="btn btn-outline-danger btn-custom-logout"
+                    class="btn btn-outline-danger btn-sm"
                     type="submit"
             >
                 LOGOUT

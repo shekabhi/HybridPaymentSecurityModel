@@ -45,7 +45,7 @@ public class HomeController {
 
         user.setUserName(username);
         user.setPassward(passwordEncoder.encode(passward));
-
+        user.setRoles("USER");
         userServices.insertUser(user);
 
         return "redirect:/login";

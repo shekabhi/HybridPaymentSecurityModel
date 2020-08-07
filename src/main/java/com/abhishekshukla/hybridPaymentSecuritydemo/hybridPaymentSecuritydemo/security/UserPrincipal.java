@@ -5,8 +5,10 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 public class UserPrincipal implements UserDetails {
 
@@ -19,7 +21,17 @@ public class UserPrincipal implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singleton(new SimpleGrantedAuthority("USER"));
+
+        List<GrantedAuthority> authorities = new ArrayList<>();
+
+
+        // Extract list of roles (ROLE_name)
+        this.user.getRolesList().forEach(r -> {
+            GrantedAuthority authority = new SimpleGrantedAuthority("ROLE_" + r);
+            authorities.add(authority);
+        });
+
+        return authorities;
     }
 
     @Override
