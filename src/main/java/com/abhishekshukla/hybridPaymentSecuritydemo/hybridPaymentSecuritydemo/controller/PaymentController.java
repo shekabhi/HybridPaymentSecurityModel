@@ -41,7 +41,6 @@ public class PaymentController {
     @GetMapping("home")
     public String index(Model model, Principal principal) throws Exception {
 
-
         List<Card> list = cardServices.findAllbyId(principal.getName());
        // System.out.println("SIZE OF LIST : " + list.size());
         List<Card> newlist = new  ArrayList<Card>();

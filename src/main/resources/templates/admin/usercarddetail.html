@@ -7,7 +7,8 @@
     <title>Payment Security</title>
 
     <link th:href="@{~/bootstrap.min.css}" rel="stylesheet">
-    <link th:href="@{~/css/payment/addcard.css}" rel="stylesheet">
+    <link th:href="@{~/css/admin/home.css}" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/041a1ea4df.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <!-- Nav Bar -->
@@ -29,38 +30,35 @@
 
 <!-- Body -->
 <div class="container">
-    <div class="row">
-        <div class="col-sm-6">
-            <h1> Add New Card </h1>
-        </div>
-        <div class="col-sm-6">
-            <!-- payment Form -->
-            <form th:action="@{/payment/newcardadded}" method="POST">
-                <div class="form-group">
-                    <input style=" margin-top: 80px; margin-left: 100px; width: 250px; "
-                            type="text" class="form-control custom-input" th:id="accountnumber" th:name="accountnumber" th:value="1234567890" placeholder="Enter Account Number" required />
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="form-group">
-                            <input style=" margin-top: 40px; margin-left: 100px; width: 100px; "
-                                    type="text" class="form-control custom-input" th:id="firstname" th:name="firstname" th:value="Abhishek" placeholder="First Name" required />
-                        </div>
-                        <div class="form-group">
-                            <input style="margin-top: 40px;margin-left: 50px;width: 100px;"
-                                    type="text" class="form-control custom-input" th:id="lastname" th:name="lastname" th:value="Shukla" placeholder="Last Name" required/>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <input style="margin-top: 20px;margin-left: 100px;width: 100px;"
-                            type="text" class="form-control custom-input" th:id="expdate" th:name="expdate" placeholder="MM/YY" required />
-                </div>
-                <button type="submit" class="btn btn-outline-danger btn-custom-add"> ADD </button>
-            </form>
-        </div>
+    <a th:href="@{'/admin/home/'}" style="text-decoration: none;">
+        <h2>Admin Panel</h2>
+    </a>
+
+    <div style="margin-top: 40px;" class="table-responsive-lg">
+        <table class="table table-hover table-dark">
+            <thead>
+            <tr>
+                <th scope="col">User</th>
+                <th scope="col">Account Number</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Exp Date</th>
+            </tr>
+            </thead>
+            <tbody th:each="usercard, iStat : ${usercards}">
+            <tr>
+                <td th:text="${usercard.username}"></td>
+                <td th:text="${usercard.accountnumber}"></td>
+                <td th:text="${usercard.firstname}"></td>
+                <td th:text="${usercard.lastname}"></td>
+                <td th:text="${usercard.expdate}"></td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </div>
+
+
 
 </body>
 </html>
