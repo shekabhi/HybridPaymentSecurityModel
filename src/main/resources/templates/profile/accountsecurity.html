@@ -1,10 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Page</title>
+
+    <link th:href="@{~/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{~/css/profile/home.css}" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/041a1ea4df.js" crossorigin="anonymous"></script>
 </head>
 <body>
+<!-- Nav Bar -->
+
+<nav class="navbar navbar-light bg-custom mr-auto">
+    <a class="navbar-brand mr-auto" th:href="@{/}">
+        <img th:src="@{${'data:image/png;base64,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'}}"
+             class="d-inline-block align-top img-logo" />
+        Apple
+    </a>
+    <form class="form-inline" th:action="@{/logout}" method="post">
+        <button sec:authorize="isAuthenticated()" class="btn btn-outline-danger btn-custom-logout" type="submit"> LOGOUT </button>
+        <button sec:authorize="isAnonymous()" th:action="@{/login}" class="btn btn-outline-danger btn-custom-login" type="submit"> LOGIN </button>
+    </form>
+</nav>
+
+<!-- Body -->
+<div class="row">
+    <div class="col-sm-3">
+        <div class="container">
+            <ul class="list-group">
+                <li style="background-color: #ff0000;" class="list-group-item list-custom">
+                    <lr><i class="fas fa-user-tie"></i><span sec:authorize="isAuthenticated()" style="color: white;margin-left: 10px;" sec:authentication="name"></span></lr>
+                </li>
+                <a th:href="@{/profile/home}" class="list-group-item list-group-item-action list-custom">Profile</a>
+                <a th:href="@{/profile/accountsecurity}" class="list-group-item list-group-item-action list-custom">Account Security</a>
+                <a th:href="@{/profile/billing}" class="list-group-item list-group-item-action list-custom">Billing</a>
+            </ul>
+        </div>
+    </div>
+
+    <!--ROW 2-->
+    <div style=" margin-left: 40px;" class="col-sm-7">
+        <h2>Account Security</h2>
+        <form style="margin-top: 20px;" th:action="@{/profile/updatepassword/}" method="post">
+
+            <div class="form-group">
+                <label>New Password</label>
+                <input type="password" class="form-control custom-input" th:name="password" th:id="password"/>
+                <p style="color: white; margin-top: 10px; font-size: 12px;">
+                    Make sure it's at least 15 characters OR at least 8 characters including a number and a lowercase letter
+                </p>
+            </div>
+            <button class="btn btn-outline-danger btn-custom-login" type="submit">Update Password</button>
+        </form>
+
+        <!--Delete Account Form-->
+
+        <form style="margin-top: 80px;" th:action="@{/profile/deleteaccount/}" method="post">
+            <h2 style="color: #ff0000;">Delete Account</h2>
+            <p style="color: white; margin-top: 40px; font-size: 12px;">
+                Once you delete your account, there is no going back. Please be certain.
+            </p>
+            <button class="btn btn-outline-danger btn-custom-login" type="submit">Delete your account</button>
+            <p style="color: white; margin-top: 10px; font-size: 12px;">
+                Are you sure you don’t want to just downgrade your account to a FREE account? We won’t charge your payment information anymore.
+            </p>
+        </form>
+    </div>
+</div>
 
 </body>
 </html>

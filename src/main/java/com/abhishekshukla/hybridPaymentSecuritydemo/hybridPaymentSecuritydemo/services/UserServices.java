@@ -10,4 +10,5 @@ public interface UserServices {
     public List<User> findAllbyRole(String role);
 
     public void deletebyUserName(String username);
+
 }

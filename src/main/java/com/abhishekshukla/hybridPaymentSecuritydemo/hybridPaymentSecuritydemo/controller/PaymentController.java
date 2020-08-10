@@ -1,7 +1,9 @@
 package com.abhishekshukla.hybridPaymentSecuritydemo.hybridPaymentSecuritydemo.controller;
 
+import com.abhishekshukla.hybridPaymentSecuritydemo.hybridPaymentSecuritydemo.model.Billing;
 import com.abhishekshukla.hybridPaymentSecuritydemo.hybridPaymentSecuritydemo.model.Card;
 import com.abhishekshukla.hybridPaymentSecuritydemo.hybridPaymentSecuritydemo.model.EncodedData;
+import com.abhishekshukla.hybridPaymentSecuritydemo.hybridPaymentSecuritydemo.services.BillingServices;
 import com.abhishekshukla.hybridPaymentSecuritydemo.hybridPaymentSecuritydemo.services.CardServices;
 import com.abhishekshukla.hybridPaymentSecuritydemo.hybridPaymentSecuritydemo.services.SecretKeyServices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +16,8 @@ import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 import java.security.Principal;
-import java.util.ArrayList;
-import java.util.Base64;
-import java.util.List;
-
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 
 @Controller
@@ -29,6 +29,9 @@ public class PaymentController {
 
     @Autowired
     private SecretKeyServices secretKeyServices;
+
+    @Autowired
+    private BillingServices billingServices;
 
     static Cipher cipher ;
 
@@ -42,6 +45,7 @@ public class PaymentController {
     public String index(Model model, Principal principal) throws Exception {
 
         List<Card> list = cardServices.findAllbyId(principal.getName());
+
        // System.out.println("SIZE OF LIST : " + list.size());
         List<Card> newlist = new  ArrayList<Card>();
 
@@ -153,8 +157,26 @@ public class PaymentController {
         return "redirect:/payment/home";
     }
 
-    @RequestMapping("paymentgateway")
-    public String paymentGateway(){
+    @RequestMapping("paymentgateway/{id}")
+    public String paymentGateway(@PathVariable int id , Principal principal){
+
+        Card card = cardServices.findbyId(id);
+
+        SimpleDateFormat gmtDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        gmtDateFormat.setTimeZone(TimeZone.getTimeZone("Asia/Kolkata"));
+        //Current Date Time in GMT
+
+        String time = gmtDateFormat.format(new Date());
+        String username = principal.getName() ;
+        String accountnumber = card.getAccountnumber();
+
+        Billing billing = new Billing();
+        billing.setUsername(username);
+        billing.setAccountnumber(accountnumber);
+        billing.setTime(time);
+
+        billingServices.insertBillLog(billing);
+
         return "payment/paymentgateway";
     }
 

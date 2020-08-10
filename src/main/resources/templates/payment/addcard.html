@@ -18,8 +18,11 @@
              class="d-inline-block align-top img-logo" />
         Apple
     </a>
-    <div sec:authorize="isAuthenticated()">
-        <span style="color: white;margin-right: 20px;" sec:authentication="name"></span>
+    <div sec:authorize="hasRole('ROLE_USER')">
+        <a style="text-decoration: none;" th:href="@{/profile/home}">
+            <span style="color: white;margin-right: 20px;" sec:authentication="name"
+            ></span>
+        </a>
     </div>
     <form class="form-inline" th:action="@{/logout}" method="post">
         <button sec:authorize="isAuthenticated()" class="btn btn-outline-danger btn-custom-logout" type="submit"> LOGOUT </button>
@@ -32,12 +35,13 @@
     <div class="row">
         <div class="col-sm-6">
             <h1> Add New Card </h1>
+            <img class="img-card" th:src="@{${'https://lcus1storage.azureedge.net/web/v3/images/global/US_BC_Static.png?v=0x8D6E559E6A5C322'}}">
         </div>
         <div class="col-sm-6">
             <!-- payment Form -->
             <form th:action="@{/payment/newcardadded}" method="POST">
                 <div class="form-group">
-                    <input style=" margin-top: 80px; margin-left: 100px; width: 250px; "
+                    <input style=" margin-top: 120px; margin-left: 100px; width: 250px; "
                             type="text" class="form-control custom-input" th:id="accountnumber" th:name="accountnumber" th:value="1234567890" placeholder="Enter Account Number" required />
                 </div>
                 <div class="container">

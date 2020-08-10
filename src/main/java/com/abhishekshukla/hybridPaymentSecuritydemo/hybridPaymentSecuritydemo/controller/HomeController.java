@@ -1,6 +1,8 @@
 package com.abhishekshukla.hybridPaymentSecuritydemo.hybridPaymentSecuritydemo.controller;
 
+import com.abhishekshukla.hybridPaymentSecuritydemo.hybridPaymentSecuritydemo.model.Profile;
 import com.abhishekshukla.hybridPaymentSecuritydemo.hybridPaymentSecuritydemo.model.User;
+import com.abhishekshukla.hybridPaymentSecuritydemo.hybridPaymentSecuritydemo.services.ProfileServices;
 import com.abhishekshukla.hybridPaymentSecuritydemo.hybridPaymentSecuritydemo.services.UserServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -19,6 +21,9 @@ public class HomeController {
     @Autowired
     private UserServices userServices;
 
+    @Autowired
+    private ProfileServices profileServices;
+
 
     @RequestMapping(value = "/")
     public String index(){
@@ -35,6 +40,11 @@ public class HomeController {
         return "signin";
     }
 
+    @RequestMapping(value = "/about")
+    public String AboutPage(){
+        return "about";
+    }
+
     @PostMapping(value = "/newuser")
     public String newUser(@RequestParam("username") String username,
                           @RequestParam("passward") String passward){
@@ -47,6 +57,12 @@ public class HomeController {
         user.setPassward(passwordEncoder.encode(passward));
         user.setRoles("USER");
         userServices.insertUser(user);
+
+        Profile profile = new Profile();
+        profile.setUsername(username);
+
+        profileServices.insertProfile(profile);
+
 
         return "redirect:/login";
     }

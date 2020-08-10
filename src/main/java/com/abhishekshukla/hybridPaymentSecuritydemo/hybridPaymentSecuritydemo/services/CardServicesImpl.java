@@ -36,4 +36,9 @@ public class CardServicesImpl implements CardServices {
         return cardRepository.findById((long)id) ;
     }
 
+    @Override
+    public void deletebyUserName(String username) {
+        cardRepository.deletebyUserName(username); ;
+    }
+
 }

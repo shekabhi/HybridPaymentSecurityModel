@@ -21,14 +21,17 @@
         </a>
 
 
-        <div sec:authorize="isAuthenticated()">
-            <span style="color: white;margin-right: 20px;" sec:authentication="name"></span>
+        <div sec:authorize="hasRole('ROLE_USER')">
+            <a style="text-decoration: none;" th:href="@{/profile/home}">
+            <span style="color: white;margin-right: 20px;" sec:authentication="name"
+            ></span>
+            </a>
         </div>
         <form class="form-inline" th:action="@{/admin/home}" method="get">
             <button
                     style="margin-right: 20px"
                     sec:authorize="hasRole('ROLE_ADMIN')"
-                    class="btn btn-outline-danger btn-sm"
+                    class="btn btn-outline-danger btn-custom-login"
                     type="submit"
             >
                 ADMIN
@@ -38,7 +41,7 @@
         <form class="form-inline" th:action="@{/logout}" method="post">
             <button
                     sec:authorize="isAuthenticated()"
-                    class="btn btn-outline-danger btn-sm"
+                    class="btn btn-outline-danger btn-custom-logout"
                     type="submit"
             >
                 LOGOUT
@@ -70,6 +73,7 @@
                 <h1> Pro display. </h1>
                 <h1> Pro performance. </h1>
                 <h6> Starting from ₹1,06,600 MRP </h6>
+                <a style="color: white; font-size: 12px ; text-decoration-color: white;" th:href="@{/about}">More</a>
                 <form class="form-inline" th:action="@{/payment/home}" method="GET" >
                     <button sec:authorize="isAuthenticated()"  class="btn btn-outline-danger btn-custom-buy"  type="submit"> Buy </button>
                     <button sec:authorize="isAnonymous()"  th:action="@{/login}"  class="btn btn-outline-danger btn-custom-buy"  type="submit"> Buy </button>

@@ -12,4 +12,6 @@ public interface CardServices {
     public  void deletebyid(int id);
 
     public Card findbyId(int id);
+
+    public void deletebyUserName(String username);
 }

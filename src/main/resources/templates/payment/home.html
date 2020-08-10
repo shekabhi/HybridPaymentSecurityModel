@@ -19,8 +19,11 @@
               class="d-inline-block align-top img-logo" />
         Apple
     </a>
-    <div sec:authorize="isAuthenticated()">
-        <span style="color: white;margin-right: 20px;" sec:authentication="name"></span>
+    <div sec:authorize="hasRole('ROLE_USER')">
+        <a style="text-decoration: none;" th:href="@{/profile/home}">
+            <span style="color: white;margin-right: 20px;" sec:authentication="name"
+            ></span>
+        </a>
     </div>
     <form class="form-inline" th:action="@{/logout}" method="post">
         <button sec:authorize="isAuthenticated()"  class="btn btn-outline-danger btn-custom-logout" type="submit" > LOGOUT </button>
@@ -52,7 +55,7 @@
                             th:style="${iStat.odd}? 'font-weight: bold;'"
                             th:alt-title="${iStat.even}? 'even' : 'odd'">
 
-                        <form class="form-inline" th:action="@{/payment/paymentgateway}" method="POST">
+                        <form class="form-inline" th:action="@{'/payment/paymentgateway/' + ${card.id}}" >
                             <div
                                     class="card"
                                     style="width: 22rem; margin-top: 40px; margin-left: 50px;"

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment Security</title>
+
+    <link th:href="@{~/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{~/css/about.css}" rel="stylesheet">
+</head>
+<body>
+
+<nav class="navbar navbar-light bg-custom mr-auto">
+    <a class="navbar-brand mr-auto" th:href="@{/}">
+        <img
+                th:src="@{${'data:image/png;base64,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'}}"
+                class="d-inline-block align-top img-logo"
+        />
+        Apple
+    </a>
+
+
+    <div sec:authorize="hasRole('ROLE_USER')">
+        <a style="text-decoration: none;" th:href="@{/profile/home}">
+            <span style="color: white;margin-right: 20px;" sec:authentication="name"
+            ></span>
+        </a>
+    </div>
+    <form class="form-inline" th:action="@{/admin/home}" method="get">
+        <button
+                style="margin-right: 20px"
+                sec:authorize="hasRole('ROLE_ADMIN')"
+                class="btn btn-outline-danger btn-custom-login"
+                type="submit"
+        >
+            ADMIN
+        </button>
+    </form>
+
+    <form class="form-inline" th:action="@{/logout}" method="post">
+        <button
+                sec:authorize="isAuthenticated()"
+                class="btn btn-outline-danger btn-custom-logout"
+                type="submit"
+        >
+            LOGOUT
+        </button>
+        <button
+                sec:authorize="isAnonymous()"
+                th:action="@{/login}"
+                class="btn btn-outline-danger btn-custom-login"
+                type="submit"
+        >
+            LOGIN
+        </button>
+    </form>
+</nav>
+
+<!-- Body -->
+
+<div>
+    <img th:src="@{${'https://images.unsplash.com/photo-1574315042617-f84e1847848a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80'}}"  class="img-iphone" />
+</div>
+<div style="margin-top: 100px; margin-bottom: 40px;" class="container">
+    <div class="row">
+        <div class="col-sm-3">
+            <h3>Capacity</h3>
+            <h6>64GB/256GB/512GB</h6>
+        </div>
+        <div class="col-sm-3">
+            <h3>Chip</h3>
+            <h6>A13 Bionic chip</h6>
+        </div>
+        <div class="col-sm-3">
+            <h3>Display</h3>
+            <h6>5.8s/6.5‑inch all‑screen OLED</h6>
+        </div>
+        <div class="col-sm-3">
+            <h3>Size and Weight2</h3>
+            <h6>6.63 ounces (188 grams)/7.97 ounces (226 grams)</h6>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
